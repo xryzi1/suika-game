@@ -55,14 +55,11 @@
     }
 
     #game-score {
-      position: absolute;
-      width: 100%;
-      border-bottom: 2px dotted #333;
-      font-size: 84px;
-      font-weight: 900;
-      padding-left: 16px;
-      color: var(--col-bg-lighter);
-      text-shadow: 3px 3px 0 var(--col-primary), -3px -3px 0 var(--col-primary), -3px 3px 0 var(--col-primary), 3px -3px 0 var(--col-primary);
+      color: #333;
+      font-weight: 700;
+      font-size: 24px;        /* fits 48px bar */
+      line-height: 1;
+      white-space: nowrap;
     }
 
     #game-end-container {
@@ -134,15 +131,26 @@
       margin-right: 8px;
     }
 
-    #game-highscore-value {
-      color: #333;
-      font-weight: 700;
-      font-size: 24px;
-    }
+
 
     #game-next-fruit {
       width: 24px;
       height: 24px;
+    }
+
+    #game-boundary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 84px;               /* matches loseHeight */
+      border-bottom: 2px dotted #333;
+      pointer-events: none;
+    }
+    #game-highscore-value {
+      color: #333;
+      font-weight: 700;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -150,8 +158,7 @@
   <div class="container">
     <div id="game-canvas">
       <div id="game-ui">
-        <p id="game-score"></p>
-
+        <div id="game-boundary"></div>
         <div id="game-end-container">
           <div id="game-end">
             <div id="game-end-title">Game Over!</div>
@@ -167,6 +174,10 @@
           <div class="game-status-item">
             <div class="game-status-label">Next</div>
             <img id="game-next-fruit" src="./assets/img/circle0.png" />
+          </div>
+          <div class="game-status-item">
+            <div class="game-status-label">Score</div>
+            <div id="game-score"></div>
           </div>
         </div>
       </div>
